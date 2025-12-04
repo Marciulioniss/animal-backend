@@ -1,6 +1,7 @@
-namespace animal_backend_core.Commands;
+using MediatR;
 
-public class DeleteProductCommand
+
+namespace animal_backend_core.Commands
 {
-    
+    public record DeleteProductCommand(Guid Id) : IRequest<bool>;
 }

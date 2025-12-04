@@ -1,6 +1,12 @@
-namespace animal_backend_core.Commands;
+using MediatR;
 
-public class CreateProductCommand
+namespace animal_backend_core.Commands
 {
-    
+    public record CreateProductCommand(
+        string Name,
+        string Type,
+        string PhotoUrl,
+        string Description,
+        string Manufacturer
+    ) : IRequest<int>;
 }

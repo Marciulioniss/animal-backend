@@ -1,6 +1,8 @@
-namespace animal_backend_core.Queries;
+using MediatR;
+using System.Collections.Generic;
+using animal_backend_domain.Dtos;
 
-public class GetAllProductsQuery
+namespace animal_backend_core.Queries
 {
-    
+    public record GetAllProductsQuery() : IRequest<List<ProductInfoDto>>;
 }

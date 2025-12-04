@@ -1,6 +1,11 @@
-namespace animal_backend_core.Commands;
+using MediatR;
 
-public class UpdateProductCommand
+namespace animal_backend_core.Commands
 {
-    
+    public record UpdateProductCommand(
+        Guid Id,
+        string Name,
+        decimal Price,
+        string? Description
+    ) : IRequest<bool>;
 }

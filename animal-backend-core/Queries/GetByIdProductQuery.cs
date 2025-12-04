@@ -1,6 +1,8 @@
-namespace animal_backend_core.Queries;
+using System;
+using animal_backend_domain.Dtos;
+using MediatR;
 
-public class GetByIdProductQuery
+namespace animal_backend_core.Queries
 {
-    
+    public record GetByIdProductQuery(int Id) : IRequest<ProductInfoDto?>;
 }
