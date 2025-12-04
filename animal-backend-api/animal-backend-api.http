@@ -1,6 +1,0 @@
-@animal_backend_api_HostAddress = http://localhost:5068
-
-GET {{animal_backend_api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

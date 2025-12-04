@@ -1,6 +1,6 @@
-﻿namespace animal_backend_model.Entities;
+﻿namespace animal_backend_domain.Entities;
 
-public class Veterinarian
+public class Veterinarian : Entity
 {
 	
 }

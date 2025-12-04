@@ -1,4 +1,4 @@
-﻿namespace animal_backend_model.Dtos;
+﻿namespace animal_backend_domain.Dtos;
 
 public class VeterinarianInfoDto
 {

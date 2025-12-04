@@ -1,6 +1,6 @@
 ﻿namespace animal_backend_api.Controllers;
 
-public class VeterinarianController
+public class VeterinarianController : BaseController
 {
 	
 }
