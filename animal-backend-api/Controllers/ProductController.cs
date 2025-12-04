@@ -28,13 +28,16 @@ public class ProductController : BaseController
 
         var getAllProductsTool = ChatTool.CreateFunctionTool(
             functionName: "get_all_products",
-            description: "Get all products from the database",
-            parameters: BinaryData.FromString("""{"type":"object","properties":{},"required":[]}""")
+            functionDescription: "Get all products from the database",
+            functionParameters: BinaryData.FromString("""{"type":"object","properties":{},"required":[]}""")
         );
+        var systemPrompt = "Tu esi draugiškas veterinarijos produktų specialistas vardu pISPpas." +
+            "Atsakyk į visus naudotojo klausimus apie produktus.";
 
         ChatCompletion initialResponse = await chatClient.CompleteChatAsync(
             messages: new ChatMessage[]
-            {
+            {   
+                ChatMessage.CreateSystemMessage(systemPrompt),
                 ChatMessage.CreateUserMessage(message)
             },
             options: new ChatCompletionOptions
