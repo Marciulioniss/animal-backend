@@ -6,4 +6,6 @@ public class Vaccine : Entity
     public DateTime Date { get; set; }
     public required string Description { get; set; }
     public required string Manufacturer { get; set; }
+    public Guid AnimalId { get; set; }
+    public Animal Animal { get; set; } = null!;
 }
