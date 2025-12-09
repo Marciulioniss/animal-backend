@@ -1,9 +1,9 @@
-﻿using MediatR;
+using MediatR;
 using animal_backend_domain.Types;
 namespace animal_backend_core.Commands
 {
-    public record CreateVeterinarianCommand(
-        Guid UserId,
+    public record UpdateVeterinarianCommand(
+        Guid Id,
         DateTime BirthDate,
         string Rank,
         string Responsibilities,
@@ -13,5 +13,5 @@ namespace animal_backend_core.Commands
         DateTime HireDate,
         int ExperienceYears,
         GenderType Gender
-    ) : IRequest<Guid>;
+    ) : IRequest<Unit>;
 }
