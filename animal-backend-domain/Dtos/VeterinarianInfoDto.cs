@@ -1,7 +1,8 @@
-﻿using animal_backend_domain.Types;
+﻿using animal_backend_domain.Entities;
+using animal_backend_domain.Types;
 namespace animal_backend_domain.Dtos;
 
-public class VeterinarianInfoDto
+public class VeterinarianInfoDto : UserInfoDto
 {
     public Guid Id { get; set; }
 	public DateTime BirthDate { get; set; }

@@ -9,15 +9,15 @@ public class DeleteVeterinarianCommandHandler(AnimalDbContext dbContext)
 {
     public async Task<Unit> Handle(DeleteVeterinarianCommand request, CancellationToken cancellationToken)
     {
-        var vaccine = await dbContext.Vaccines
+        var veterinarian = await dbContext.Veterinarians
             .FirstOrDefaultAsync(p => p.Id == request.Id, cancellationToken);
 
-        if (vaccine is null)
+        if (veterinarian is null)
         {
-            throw new KeyNotFoundException($"Vaccine with ID {request.Id} not found");
+            throw new KeyNotFoundException($"Veterinarian with ID {request.Id} not found");
         }
 
-        dbContext.Vaccines.Remove(vaccine);
+        dbContext.Veterinarians.Remove(veterinarian);
         await dbContext.SaveChangesAsync(cancellationToken);
 
         return Unit.Value;

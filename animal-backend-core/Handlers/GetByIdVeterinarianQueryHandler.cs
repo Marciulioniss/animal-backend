@@ -20,6 +20,13 @@ public class GetByIdVeterinarianQueryHandler(AnimalDbContext dbContext)
 
         return new VeterinarianInfoDto
         {
+            Name = veterinarian.Name,
+            Surname = veterinarian.Surname,
+            Email = veterinarian.Email,
+            Password = veterinarian.Password,
+            Role = veterinarian.Role,
+            PhoneNumber = veterinarian.PhoneNumber,
+            PhotoUrl = veterinarian.PhotoUrl,
             Id = veterinarian.Id,
             BirthDate = veterinarian.BirthDate,
             Rank = veterinarian.Rank,

@@ -3,7 +3,13 @@ using animal_backend_domain.Types;
 namespace animal_backend_core.Commands
 {
     public record CreateVeterinarianCommand(
-        Guid UserId,
+        string Name,
+        string Surname,
+        string Email,
+        string Password,
+        RoleType Role,
+        string PhoneNumber,
+        string PhotoUrl,
         DateTime BirthDate,
         string Rank,
         string Responsibilities,

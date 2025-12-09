@@ -14,6 +14,13 @@ public class GetAllVeterinariansQueryHandler(AnimalDbContext dbContext)
         var veterinarians = await dbContext.Veterinarians.ToListAsync(cancellationToken);
         return veterinarians.Select(v => new VeterinarianInfoDto
         {
+            Name = v.Name,
+            Surname = v.Surname,
+            Email = v.Email,
+            PhoneNumber = v.PhoneNumber,
+            Password = v.Password,
+            Role = v.Role,
+            PhotoUrl = v.PhotoUrl,
             Id = v.Id,
             BirthDate = v.BirthDate,
             Rank = v.Rank,

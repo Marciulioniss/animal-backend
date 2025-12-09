@@ -15,24 +15,18 @@ public class CreateVeterinarianCommandHandler(AnimalDbContext dbContext)
 {
     public async Task<Guid> Handle(CreateVeterinarianCommand request, CancellationToken cancellationToken)
     {
-        var user = await dbContext.Users.FindAsync(request.UserId);
-        if (user == null)
-        {
-            throw new NotFoundException($"User with ID {request.UserId} not found");
-        }
 
         var veterinarian = new animal_backend_domain.Entities.Veterinarian
         {
             Id = Guid.NewGuid(),
-            // Copy from existing user
-            Name = user.Name,
-            Surname = user.Surname,
-            Email = user.Email,
-            Password = user.Password,
+            Name = request.Name,
+            Surname = request.Surname,
+            Email = request.Email,
+            Password = request.Password,
             Role = animal_backend_domain.Types.RoleType.Veterinarian,
-            PhoneNumber = user.PhoneNumber,
-            PhotoUrl = user.PhotoUrl,
-            // Vet-specific data from request
+            PhoneNumber = request.PhoneNumber,
+            PhotoUrl = request.PhotoUrl,
+
             BirthDate = request.BirthDate,
             Rank = request.Rank,
             Responsibilities = request.Responsibilities,
@@ -45,8 +39,6 @@ public class CreateVeterinarianCommandHandler(AnimalDbContext dbContext)
         };
 
         dbContext.Veterinarians.Add(veterinarian);
-        user.VeterinarianId = veterinarian.Id;
-        dbContext.Users.Update(user);
 
         await dbContext.SaveChangesAsync(cancellationToken);
         return veterinarian.Id;

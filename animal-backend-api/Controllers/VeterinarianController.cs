@@ -21,11 +21,17 @@ public class VeterinarianController : BaseController
         return Ok(await Mediator.Send(new GetByIdVeterinarianQuery(id)));
     }
 
-    [HttpPost("user/{userId}")]
-    public async Task<IActionResult> Create([FromRoute] Guid userId, [FromBody] VeterinarianInfoDto dto)
+    [HttpPost()]
+    public async Task<IActionResult> Create([FromBody] VeterinarianInfoDto dto)
     {
         var command = new CreateVeterinarianCommand(
-            userId,
+            dto.Name,
+            dto.Surname,
+            dto.Email,
+            dto.Password,
+            dto.Role,
+            dto.PhoneNumber,
+            dto.PhotoUrl,
             dto.BirthDate,
             dto.Rank,
             dto.Responsibilities,
