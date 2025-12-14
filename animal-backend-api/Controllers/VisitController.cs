@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using animal_backend_core.Queries;
 using animal_backend_core.Commands;
 using animal_backend_domain.Dtos;
+using animal_backend_domain.Dtos.Workday;
 
 namespace animal_backend_api.Controllers;
 
@@ -66,5 +67,11 @@ public class VisitController : BaseController
         );
 
         return Ok(await Mediator.Send(command));
+    }
+    
+    [HttpGet("workday")]
+    public async Task<IActionResult> GetWorkday([FromQuery] GetVeterinarianAvailableWorkdayQuery query)
+    {
+        return Ok(await Mediator.Send(query));
     }
 }

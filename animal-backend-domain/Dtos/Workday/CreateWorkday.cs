@@ -1,4 +1,4 @@
-﻿namespace animal_backend_domain.Dtos;
+﻿namespace animal_backend_domain.Dtos.Workday;
 
 public class CreateWorkday
 {
