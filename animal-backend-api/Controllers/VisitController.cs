@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using animal_backend_core.Queries;
 using animal_backend_core.Commands;
 using animal_backend_domain.Dtos;
+using animal_backend_domain.Dtos.Workday;
 
 namespace animal_backend_api.Controllers;
 
@@ -53,5 +54,30 @@ public class VisitController : BaseController
     public async Task<IActionResult> Delete(Guid id)
     {
         return Ok(await Mediator.Send(new DeleteVisitCommand(id)));
+    }
+    
+    [HttpPost("workday")]
+    public async Task<IActionResult> CreateWorkday([FromBody] CreateWorkday dto)
+    {
+        var command = new CreateVeterinarianWorkdayCommand(
+            dto.VeterinarianId,
+            dto.Date,
+            dto.StartHour,
+            dto.EndHour
+        );
+
+        return Ok(await Mediator.Send(command));
+    }
+    
+    [HttpGet("workday")]
+    public async Task<IActionResult> GetWorkday([FromQuery] GetVeterinarianAvailableWorkdayQuery query)
+    {
+        return Ok(await Mediator.Send(query));
+    }
+    
+    [HttpDelete("workday")]
+    public async Task<IActionResult> DeleteWorkday([FromQuery] DeleteVeterinarianWorkdayQuery query)
+    {
+        return Ok(await Mediator.Send(query));
     }
 }
