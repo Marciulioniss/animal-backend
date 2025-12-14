@@ -74,4 +74,10 @@ public class VisitController : BaseController
     {
         return Ok(await Mediator.Send(query));
     }
+    
+    [HttpDelete("workday")]
+    public async Task<IActionResult> DeleteWorkday([FromQuery] DeleteVeterinarianWorkdayQuery query)
+    {
+        return Ok(await Mediator.Send(query));
+    }
 }
